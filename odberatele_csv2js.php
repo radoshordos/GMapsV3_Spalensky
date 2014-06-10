@@ -10,23 +10,35 @@ class OdberateleCsv2js
     public function readCsvData()
     {
 
+
+        $fin = '';
         $y = $i = 0;
-        $data = array();
-        $file = file_get_contents(self::CSV_UTF8_FILE);
-        $row = explode(';', $file);
+        $arr = explode("\r\n", file_get_contents(self::CSV_UTF8_FILE));
 
 
-        foreach ($row as $key => $val) {
+        foreach ($arr as $val) {
+            $row = explode(";", $val);
+            $i = 0;
+            foreach ($row as $col) {
 
-            $line[$y][$i++] = $val;
+                $line[$y][$i++] = $col;
+            }
+            $y++;
+        }
 
-            if ($key % self::LINE_PER_ROW == (self::LINE_PER_ROW - 1)) {
-                $y++;
+
+        foreach ($line as $row) {
+
+
+            if (count($row) == 17) {
+
+                $arr = array($row[11], $row[12],"'".$row[2]."'");
+                $fin .= "[" . implode(",", $arr) . "],\n";
             }
         }
 
 
-        file_put_contents(self::OUTPUT_FILE, json_encode($line));
+        file_put_contents(self::OUTPUT_FILE, $fin);
 
     }
 }

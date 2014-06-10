@@ -1,74 +1,230 @@
+var LocationData = [
+    [50.8002139,14.4223945,'Česká Kamenice'],
+    [50.7610531,14.555042,'Nový Bor'],
+    [50.6918336,13.9753739,'ÚSTÍ NAD LABEM'],
+    [49.5919144,15.5801391,'HAVLÍČKŮV BROD'],
+    [50.6533453,15.2530872,'Železný Brod'],
+    [49.596526,15.5592136,'Havlíčkův Brod'],
+    [49.6735288,15.3937166,'Světlá nad Sázavou'],
+    [49.168289,16.6850444,'Brno - Slatina'],
+    [49.1931284,16.6359691,'Brno'],
+    [49.9551565,14.0537136,'Beroun'],
+    [50.0703383,14.4849173,'PRAHA 10'],
+    [50.0776919,14.6476295,'Újezd nad Lesy, Praha 9'],
+    [49.787938,14.1795768,'DOBŘÍŠ'],
+    [50.061156,14.4717994,'Praha 10'],
+    [50.0876586,14.4819596,'PRAHA 3'],
+    [50.7811713,14.2475587,'Děčín'],
+    [50.2823603,14.2351665,'Velvary'],
+    [49.9726302,14.5078004,'JESENICE U PRAHY'],
+    [49.4528839,16.5387803,'Lysice'],
+    [49.201225,16.6433584,'BRNO'],
+    [49.2128861,16.5768884,'Brno'],
+    [49.2224884,16.6242715,'Brno Lesná'],
+    [49.1654757,16.7260466,'Šlapanice'],
+    [49.2003654,16.6006663,'BRNO 2'],
+    [50.8948017,14.6217003,'Varnsdorf'],
+    [49.1932472,16.0413574,'Koněšín'],
+    [49.3722823,16.6408008,'Blansko'],
+    [49.4909538,16.6619859,'Boskovice'],
+    [50.185569,14.4912603,'Líbeznice'],
+    [48.9508783,16.311287,'ZNOJMO 2'],
+    [50.7264981,15.16711,'JABLONEC NAD NISOU 1'],
+    [48.740509,16.8609438,'BŘECLAV'],
+    [50.4230687,14.8995691,'MLADÁ BOLESLAV'],
+    [50.0359529,14.2348567,'RUDNÁ U PRAHY'],
+    [50.4602056,13.3718229,'CHOMUTOV'],
+    [50.1466863,14.3330289,'Černý Vůl'],
+    [50.7724923,15.0607439,'Liberec'],
+    [49.2916582,17.3993799,'KROMĚŘÍŽ'],
+    [50.7895876,15.0327993,'STRÁŽ N.NIS.-LIBEREC'],
+    [49.5495843,15.3527452,'HUMPOLEC-Litochleby'],
+    [50.6020444,15.1457476,'TURNOV'],
+    [50.131809,14.3362496,'HOROMĚŘICE'],
+    [50.0189616,14.5224947,'Praha 4 - Újezd'],
+    [50.6687978,13.7947653,'Dubí 1'],
+    [49.976175,14.3862097,'PRAHA 5 Zbraslav'],
+    [50.5264126,14.1312465,'LITOMĚŘICE'],
+    [50.3568717,13.8110257,'LOUNY'],
+    [50.3253558,13.5436122,'ŽATEC'],
+    [50.6726158,14.5184248,'ČESKÁ LÍPA 1'],
+    [50.6377906,13.7548855,'Oldřichov u Duchcova'],
+    [49.6560927,14.4332268,'Sedlčany'],
+    [50.1217762,14.5727497,'PRAHA 9 - Satalice'],
+    [50.6297848,15.4770112,'Víchová nad Jizerou'],
+    [49.6621962,14.0357805,'PŘÍBRAM IX'],
+    [49.928353,14.3020259,'VŠENORY U PRAHY'],
+    [49.770835,14.6790717,'BENEŠOV U PRAHY'],
+    [50.7592553,14.1963402,'Děčín VI - Letná'],
+    [50.4951983,15.5188075,'Nová Paka'],
+    [50.1423901,14.0589864,'Kladno - Rozdělov'],
+    [50.9033669,14.6386677,'VARNSDORF'],
+    [50.3172143,14.3616619,'Vraňany'],
+    [50.3493266,14.4476038,'Mělník'],
+    [49.4699635,15.0044314,'Pacov'],
+    [50.0781216,14.6185379,'Praha 9 - Běchovice'],
+    [49.3624688,16.6431315,'Blansko'],
+    [49.1747943,16.5221366,'Brno - Bosonohy'],
+    [49.2291012,15.8780965,'Třebíč'],
+    [50.6590343,14.0072854,'Ústí nad Labem'],
+    [50.426752,14.2588566,'ROUDNICE NAD LABEM'],
+    [50.6447549,13.8164796,'Teplice'],
+    [50.1115338,14.5816686,'Praha 9'],
+    [49.1790303,16.6053791,'Brno'],
+    [50.1111453,14.5824723,'Praha - Černý Most'],
+    [50.0755316,14.3078771,'Praha - Řepy'],
+    [49.2741177,17.0071825,'Vyškov'],
+    [50.0343841,14.4191765,'PRAHA 47 -Bráník'],
+    [48.7967357,16.629967,'Mikulov'],
+    [50.5347053,15.3700392,'Lomnice nad Popelkou'],
+    [50.6211183,13.8586963,'Bystřany - Světice'],
+    [49.079038,15.4391899,'DAČICE'],
+    [49.0824318,15.4520545,'DAČICE'],
+    [49.2903085,15.4835579,'TŘEŠŤ'],
+    [50.6974587,15.4369026,'Jablonec nad Jizerou'],
+    [49.949281,14.3923105,'Měchenice'],
+    [49.074205,17.4164556,'Staré Město'],
+    [49.8564791,14.7063558,'Čerčany'],
+    [50.7994691,14.4176338,'Česká Kamenice'],
+    [49.1978305,15.8279165,'Stařeč'],
+    [49.5758203,15.9381503,'ŽĎÁR NAD SÁZAVOU'],
+    [48.9468601,16.7332715,'Hustopeče'],
+    [49.0118906,17.4344245,'OSTROŽSKÁ NOVÁ VES'],
+    [50.1865814,15.0402775,'Nymburk'],
+    [50.0549916,14.4542058,'PRAHA - Michle'],
+    [50.2559944,14.5132055,'NERATOVICE'],
+    [49.4271949,15.5972079,'Jihlava'],
+    [50.2259851,14.1060566,'Slaný'],
+    [49.7403212,15.1023421,'Zruč nad Sázavou'],
+    [49.8889155,15.0685107,'Uhlířské Janovice'],
+    [48.882052,17.1819255,'Rohatec u Hodonína'],
+    [50.7402471,15.3086637,'Tanvald'],
+    [50.3296019,13.5344121,'Žatec l'],
+    [49.8369873,13.8977332,'Hořovice'],
+    [50.0839993,14.4540791,'PRAHA 3  -Žižkov'],
+    [49.3541646,16.0152145,'VELKÉ MEZIŘÍČÍ'],
+    [50.53657,14.1265921,'Litoměřice - Předměstí'],
+    [50.4383419,15.3548842,'Jičín'],
+    [50.736639,15.0705372,'Liberec - Vesec'],
+    [50.245764,14.3237331,'Kralupy nad Vltavou'],
+    [49.1650148,16.5997571,'Brno'],
+    [50.7431615,15.0831016,'Liberec 30'],
+    [49.989117,14.3758382,'Praha 5 Radotín'],
+    [50.3498932,14.4958281,'Mělník'],
+    [49.9672047,14.0862836,'Beroun'],
+    [49.2245102,16.5379327,'BRNO'],
+    [50.6996928,14.5436787,'ČESKÁ LÍPA'],
+    [48.8514344,17.1097128,'HODONÍN'],
+    [50.7818295,15.0389511,'LIBEREC'],
+    [50.5226343,14.1365247,'Litoměřice'],
+    [50.4296221,14.9057286,'Mladá Boleslav'],
+    [50.0162797,14.4305713,'PRAHA 4  -Modřany'],
+    [50.515244,13.6424885,'MOST'],
+    [50.1159637,14.4929916,'PRAHA 9  -Prosek'],
+    [49.6755201,13.9895481,'Příbram'],
+    [50.0385604,14.4760308,'PRAHA 4'],
+    [50.0781649,14.3107542,'PRAHA 6  -Ruzyně'],
+    [50.0723752,14.55371,'PRAHA 10 -Štěrboholy'],
+    [50.6513781,13.8414485,'Teplice Trnovany'],
+    [50.6426578,13.999522,'Ústí nad Labem - Trmice'],
+    [49.2148473,17.621128,'ZLÍN 4'],
+    [50.4405855,14.9269626,'Kosmonosy'],
+    [50.4280949,14.242595,'ROUDNICE NAD LABEM'],
+    [50.230078,14.0898343,'SLANÝ'],
+    [48.7512487,16.8601496,'BŘECLAV'],
+    [49.7728144,14.6805813,'BENEŠOV U PRAHY'],
+    [49.7874195,14.6966334,'BENEŠOV U PRAHY'],
+    [49.2187849,17.6414222,'Zlín'],
+    [49.008733,17.1226332,'Kyjov'],
+    [49.2003755,16.6263693,'Brno'],
+    [49.2092255,16.6323119,'Brno-Husovice'],
+    [49.2223603,16.5959642,'Brno'],
+    [49.3934,15.5917905,'JIHLAVA 1'],
+    [50.7375286,15.3078824,'Tanvald'],
+    [50.2366435,14.4960054,'Kojetice U Prahy'],
+    [50.7644227,15.0555428,'LIBEREC'],
+    [50.7241403,15.1748917,'Jablonec nad Nisou'],
+    [50.3732062,14.4659633,'MĚLNÍK'],
+    [50.6266546,15.6111199,'Vrchlabí'],
+    [50.0375686,14.4551121,'PRAHA 4'],
+    [50.5981359,13.6058289,'Litvínov'],
+    [49.6090697,15.5969915,'HAVLÍČKŮV BROD'],
+    [49.3171907,17.4662349,'Hulín'],
+    [49.2959283,17.4084996,'Kroměříž'],
+    [49.3939958,15.5831059,'Jihlava'],
+    [49.7036219,14.003373,'Příbram 1'],
+    [50.0638926,14.440958,'PRAHA 4'],
+    [50.7601849,14.1941088,'DĚČÍN VI'],
+    [49.9340178,14.281925,'DOBŘICHOVICE'],
+    [50.1336212,14.6607051,'Praha 9'],
+    [50.106331,13.7323382,'RAKOVNÍK'],
+    [49.266574,16.9828602,'VYŠKOV'],
+    [50.5648851,13.7783943,'Bílina'],
+    [50.6010574,13.7540202,'DUCHCOV'],
+    [50.5999447,13.6183109,'Litvínov'],
+    [50.6339413,13.7960906,'Teplice'],
+    [49.7445894,15.0989009,'Zruč nad Sázavou 1'],
+    [50.2402926,14.3183842,'KRALUPY N.VLTAVOU 1'],
+    [50.1349165,14.9815259,'Sadská'],
+    [49.1768528,16.5066858,'Troubsko'],
+    [50.7435926,15.0560548,'Liberec'],
+    [49.9248915,14.2607181,'Lety u Dobřichovic'],
+    [50.5265501,15.5758389,'Horka u Staré Paky'],
+    [50.9103207,14.6330492,'Varnsdorf'],
+    [50.3608826,13.8251127,'Louny'],
+    [50.094122,14.2115049,'Jeneč'],
+    [50.6521387,13.8427659,'Teplice'],
+    [50.7653879,15.0463957,'LIBEREC'],
+    [50.1480131,14.0685354,'Kladno - Rozdělov'],
+    [48.8616033,17.1272914,'HODONÍN'],
+    [50.1103747,14.0763402,'Velká Dobrá'],
+    [50.6642857,14.0643006,'Ústí nad Labem'],
+    [49.8393453,14.678885,'POŘÍČÍ NAD SÁZAVOU'],
+    [50.2336847,14.2841681,'Kralupy na Vltavou'],
+    [49.384047,16.6331239,'Blansko'],
+    [49.6967192,15.278596,'Ledeč nad Sázavou'],
+    [50.3140401,13.5347354,'Žatec'],
+    [50.0837401,14.3721268,'PRAHA 6 Břevnov'],
+    [50.6786016,14.5350099,'Česká Lípa'],
+    [50.1044492,14.3952444,'Praha 6'],
+    [49.2176671,17.5211947,'Otrokovice'],
+    [49.6509465,14.2587431,'Kamýk nad Vltavou']
+];
+
 function initialize() {
 
-    var markers = [];
-
-    var myLatlng = new google.maps.LatLng(49.9,15.2);
     var mapOptions = {
         zoom: 8,
-        center: myLatlng
+        center: new google.maps.LatLng(49.9,15.2)
     };
 
     var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    var bounds = new google.maps.LatLngBounds();
+    var infowindow = new google.maps.InfoWindow();
 
-    markers.push(new google.maps.Marker({
-        position: myLatlng,
-        map: map,
-        title: 'Hello World!',
-        position: new google.maps.LatLng(49.9,15.2)
-    }));
+    for (var i in LocationData) {
+        var p = LocationData[i];
+        var latlng = new google.maps.LatLng(p[0], p[1]);
+        bounds.extend(latlng);
 
+        var marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            title: p[2]+ p[1] + p[0]
+        });
 
+        google.maps.event.addListener(marker, 'click', function () {
+            infowindow.setContent(this.title);
+            infowindow.open(map, this);
+        });
+    }
 
-
-    // Create the search box and link it to the UI element.
-    var input = /** @type {HTMLInputElement} */(
-        document.getElementById('pac-input'));
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-    var searchBox = new google.maps.places.SearchBox(
-        /** @type {HTMLInputElement} */(input));
-
-    // Listen for the event fired when the user selects an item from the
-    // pick list. Retrieve the matching places for that item.
-    google.maps.event.addListener(searchBox, 'places_changed', function() {
-        var places = searchBox.getPlaces();
-
-        for (var i = 0, marker; marker = markers[i]; i++) {
-            marker.setMap(null);
-        }
-
-        // For each place, get the icon, place name, and location.
-        markers = [];
-        var bounds = new google.maps.LatLngBounds();
-        for (var i = 0, place; place = places[i]; i++) {
-            var image = {
-                url: place.icon,
-                size: new google.maps.Size(71, 71),
-                origin: new google.maps.Point(0, 0),
-                anchor: new google.maps.Point(17, 34),
-                scaledSize: new google.maps.Size(25, 25)
-            };
-
-            // Create a marker for each place.
-            var marker = new google.maps.Marker({
-                map: map,
-                icon: image,
-                title: 'Uluru (Ayers Rock)',
-                position: place.geometry.location
-            });
-
-            markers.push(marker);
-
-            bounds.extend(place.geometry.location);
-        }
-
-        map.fitBounds(bounds);
-    });
-
-    google.maps.event.addListener(map, 'bounds_changed', function() {
-        var bounds = map.getBounds();
-        searchBox.setBounds(bounds);
-    });
+    map.fitBounds(bounds);
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+google.maps.event.addListener(marker, 'click', function () {
+    infowindow.setContent(p[2]);
+    infowindow.open(map, marker);
+});
