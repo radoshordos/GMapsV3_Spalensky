@@ -5,22 +5,29 @@ class OdberateleCsv2js
     CONST CSV_UTF8_FILE = 'data-odberatele.csv';
     CONST OUTPUT_FILE = 'data-odberatele.js';
 
+    CONST LINE_PER_ROW = 17;
+
     public function readCsvData()
     {
 
-        $i = 0;
-        $row = array();
+        $y = $i = 0;
+        $data = array();
         $file = file_get_contents(self::CSV_UTF8_FILE);
-        $line = explode('\r', $file);
+        $row = explode(';', $file);
 
 
-        echo count($line);
+        foreach ($row as $key => $val) {
 
-        foreach ($line as $val) {
-            $row = explode(';', $val);
-            file_put_contents(self::OUTPUT_FILE, $row[2]);
+            $line[$y][$i++] = $val;
 
+            if ($key % self::LINE_PER_ROW == (self::LINE_PER_ROW - 1)) {
+                $y++;
+            }
         }
+
+
+        file_put_contents(self::OUTPUT_FILE, json_encode($line));
+
     }
 }
 
